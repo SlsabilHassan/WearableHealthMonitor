@@ -19,5 +19,3 @@ This repository is dedicated to the official program developed by Alexandria STE
 - **Mobile Application Framework:** Developed using React Native for a user-friendly interface on mobile devices.
 - **IoT Integration:** Connects various sensors and devices for comprehensive health monitoring.
 - **Data Encryption Protocols:** Ensures secure transmission of sensitive health information.
-
-<img src="conn1.png" width="300"/>
