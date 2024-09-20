@@ -1,0 +1,34 @@
+----------------------
+LCD
+----------------------
+RST  -> PIN 21
+CE   -> PIN 15
+DC   -> PIN 22
+DIN  -> PIN 23
+CLK  -> PIN 18
+VCC  -> 3V3
+BL   -> 3V3 With 220 ohm Resistance
+Gnd  -> Gnd
+
+----------------------
+Sound Sensor 
+----------------------
+A0 -> PIN 4
+G  -> Gnd
++  -> 3v3
+D0 -> PIN 2
+
+----------------------
+LED
+----------------------
+Long Leg  -> PIN 5 With 220 ohm Resistance
+Short Leg -> Gnd
+
+
+----------------------
+Heart Sensor IF CONNECTED
+----------------------
+Gnd -> Gnd
+vcc -> 3v3
+SDA -> PIN 14
+SCL -> PIN 27

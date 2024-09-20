@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+        <style>
+            body{
+                width: 100vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 45px;
+
+            }
+            .heart i{
+                color: red;
+            }
+            .o2 i{
+                color: rgb(56, 139, 255);
+            }
+            .sound i{
+                color: rgb(0, 170, 102);
+            }
+            .Readings{
+                width: 100%;
+            }
+            .Readings .box{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 30px;
+                margin: 20px 100px;
+                background-color: #f1f1f1;
+                border-radius: 10px;
+                box-shadow: 0px 0px 6px 1px gray;
+                
+            }
+            .Readings .box div{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }   
+            .message{
+                border-radius: 10px;
+                padding: 10px 20px;
+                max-width: 70%;
+                font-size: 30px;
+                text-align: center;
+            }
+            .message.red{
+                background-color: rgb(255, 141, 141);
+            }
+            .message.green{
+                background-color: rgb(141, 255, 179);
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h2>Web View</h2>
+        <div class="Readings">
+            <div class="box heart">
+                <div>
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>Heart Rate</p>
+                </div>
+                <p id="heartRate">-</p>
+            </div>
+            <div class="box o2">
+                <div>
+                    <i class="fa-solid fa-droplet"></i>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>o2</p>
+                </div>
+                <p id="o2">-</p>
+            </div>
+            <div class="box sound">
+                <div>
+                    <i class="fa-solid fa-ear-listen"></i>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>Sound Level</p>
+                </div>
+                <p id="soundLevel">-</p>
+            </div>
+        </div>
+        <div class="message" id="message">
+            <p>You Are Healthy </p>
+        </div>
+        <script>
+            // Function to send a GET request to '/getLast'
+            function getLastReading() {
+                // Using the Fetch API for the HTTP request
+                fetch('/lastReadings')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Assuming data contains the readings
+                        updateReadings(data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
+            }
+    
+            // Function to update readings on the page
+            function updateReadings(data) {
+                // Update the HTML content with the new data
+                // For example, assuming there are elements with ids 'heartRate', 'o2', 'soundLevel'
+                document.getElementById('heartRate').innerText = data.heart_rate;
+                document.getElementById('o2').innerText = data.o2_level;
+                document.getElementById('soundLevel').innerText = data.sound_rate;
+                document.getElementById('message').innerText = data.message;
+                if (data.message == "Your Son's Health is Good"){
+                    document.getElementById('message').classList.remove('red')
+                    document.getElementById('message').classList.add('green')
+                }else{
+                    document.getElementById('message').classList.remove('green')
+                    document.getElementById('message').classList.add('red')
+                }
+            }
+    
+            // Call getLastReading every two seconds
+            setInterval(getLastReading, 1000);
+        </script>
+    </body>
+</html>

@@ -20,3 +20,4 @@ This repository is dedicated to the official program developed by Alexandria STE
 - **IoT Integration:** Connects various sensors and devices for comprehensive health monitoring.
 - **Data Encryption Protocols:** Ensures secure transmission of sensitive health information.
 
+<img src="conn1.png" width="300"/>
